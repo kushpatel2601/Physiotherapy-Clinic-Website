@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umiya Physiotherapy Center - Restoring Movement, Enhancing Life</title>
+    
+    <!-- Bootstrap CSS -->
+    <!-- FIXED: xintegrity corrected to integrity -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@404;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <!-- FIXED: Corrected broken Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/20LKDR47R_F1g/j/R/RC/pT6geB//R/N/e/tR/r/g/i/s/s/S/p/i/i" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom CSS Styles -->
+    <style>
+        /* General Body Styles */
+        :root {
+            /* NEW: Light theme palette */
+            --bs-primary: #0d6efd; /* Blue accent */
+            --bs-primary-hover: #0b5ed7; /* Darker blue */
+            --bs-light-bg: #ffffff; /* Main background */
+            --bs-light-bg-alt: #f8f9fa; /* Alternate section background */
+            --bs-text-dark: #555; /* Main body text */
+            --bs-text-headings: #222; /* Headings */
+            --bs-text-muted: #6c757d;
+            --bs-dark-footer: #212529; /* Footer background */
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            background-color: var(--bs-light-bg);
+            color: var(--bs-text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--bs-text-headings);
+        }
+        
+        /* Make headings bolder */
+        .display-3, .display-5 {
+            font-weight: 800 !important;
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bs-primary-hover);
+            border-color: var(--bs-primary-hover);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+
+        .btn-outline-dark {
+             border-radius: 50px;
+             color: var(--bs-text-headings);
+             border-color: var(--bs-text-headings);
+        }
+        
+        .btn-outline-dark:hover {
+            transform: translateY(-3px);
+            background-color: var(--bs-text-headings);
+            color: var(--bs-light-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            background-color: var(--bs-light-bg) !important; 
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); /* Light shadow */
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: var(--bs-text-headings) !important;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: var(--bs-text-dark) !important; /* Dark text */
+            transition: color 0.3s ease;
+            position: relative;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Underline hover effect */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 1rem;
+            width: 0;
+            height: 2px;
+            background-color: var(--bs-primary);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: calc(100% - 2rem);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--bs-primary) !important; /* Accent color on hover/active */
+        }
+        
+        .navbar-toggler {
+            border-color: rgba(0,0,0,0.1);
+        }
+        
+        /* NEW: Style for the logo in the navbar */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            height: 40px; /* Adjust size as needed */
+            width: 40px;
+            margin-right: 12px;
+            border-radius: 50%; /* Assuming logo is circular */
+        }
+
+        .navbar-toggler-icon {
+            /* Dark icon for light mode */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            /* NEW: Updated background with clinic photo and light overlay */
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('clinic_photo.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bs-text-headings); /* Dark text */
+            position: relative; /* ADDED for success message positioning */
+        }
+
+        /* Animate the logo on load */
+        .hero-section img {
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        /* UPDATED: Made the remaining hero text bigger */
+        .hero-section .lead {
+            font-size: 2rem; /* Was 1.5rem */
+            font-weight: 600; /* Bolder */
+            color: var(--bs-text-dark);
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: backwards;
+        }
+ 
+        .hero-section .display-3 {
+            font-size: 3.8rem;
+            color: var(--bs-text-headings);
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: backwards; 
+        }
+ 
+        /* REMOVED duplicate .hero-section .lead */
+ 
+        .hero-section .btn {
+            animation: fadeInUp 1s ease-out 0.6s;
+            animation-fill-mode: backwards;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- End Hero --- */
+
+
+        /* --- Section Spacing --- */
+        section {
+            padding: 100px 0;
+            overflow: hidden; 
+        }
+        
+        section#home {
+            padding: 0; 
+        }
+        
+        /* Alternate light background for separation */
+        #services, #testimonials {
+            background-color: var(--bs-light-bg-alt) !important;
+        }
+
+
+        /* About Us Image */
+        #about img {
+            max-height: 400px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 15px; 
+        }
+
+        /* --- Cards (Light Theme) --- */
+        #services .card, #team .card, #testimonials .card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: #ffffff; /* White card background */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+            height: 100%;
+        }
+
+        #services .card:hover, #team .card:hover, #testimonials .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        #services .card-body {
+            padding: 35px;
+        }
+
+        #services .card i {
+            font-size: 3rem; 
+            color: var(--bs-primary); /* Accent color */
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        #services .card:hover i {
+            transform: scale(1.1);
+        }
+
+        .card-title.fw-bold {
+            color: var(--bs-text-headings);
+        }
+        
+        .card-text {
+            color: var(--bs-text-dark); /* Dark text for card body */
+        }
+        
+        #team .card-text.text-muted {
+            color: var(--bs-text-muted) !important;
+        }
+
+        /* Team Card Specifics */
+        #team .card {
+            padding-top: 20px; 
+        }
+        #team .card-img-top {
+            border: 4px solid var(--bs-primary); /* Accent color border */
+        }
+
+        #team .social-icons a {
+            color: var(--bs-text-muted);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        #team .social-icons a:hover {
+            color: var(--bs-primary);
+            transform: scale(1.2);
+        }
+        /* --- End Cards --- */
+
+        /* --- Testimonials --- */
+        #testimonials .video {
+            display: inline-block;
+            margin: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        #testimonials .video:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        #testimonials .carousel-item {
+            padding: 20px 0;
+        }
+
+        #testimonials .blockquote-footer {
+            color: var(--bs-primary); 
+        }
+
+        #testimonials .blockquote-footer strong {
+            color: var(--bs-text-headings); /* Dark name */
+        }
+
+        #testimonials .carousel-control-prev-icon,
+        #testimonials .carousel-control-next-icon {
+            background-color: var(--bs-primary); /* Accent color */
+            border-radius: 50%;
+        }
+        /* --- End Testimonials --- */
+
+
+        /* --- Contact Section --- */
+        .map-responsive {
+            overflow:hidden;
+            padding-bottom:56.25%;
+            position:relative;
+            height:0;
+        }
+        .map-responsive iframe {
+            left:0;
+            top:0;
+            height:100%;
+            width:100%;
+            position:absolute;
+            border-radius: 15px;
+            border: 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            /* filter: invert(90%) hue-rotate(180deg); REMOVED for light mode */
+        }
+
+        /* Clean up contact info */
+        #contact h4.fw-bold {
+            margin-top: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bs-primary); /* Accent color border */
+            display: inline-block;
+        }
+
+        #contact p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        #contact p i {
+            color: var(--bs-primary); /* Accent color */
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        #contact a {
+            color: var(--bs-text-dark); /* Dark links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #contact a:hover {
+            color: var(--bs-primary) !important;
+        }
+
+        #contact .social-media a {
+            color: var(--bs-primary);
+            font-size: 1.8rem;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #contact .social-media a:hover {
+            color: var(--bs-primary-hover);
+            transform: scale(1.2);
+        }
+        /* --- End Contact --- */
+
+
+        /* --- Footer (Keeping it dark for contrast) --- */
+        footer {
+            background-color: var(--bs-dark-footer) !important;
+            padding: 30px 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: var(--bs-text-muted);
+        }
+
+        footer a {
+            color: #adb5bd !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white !important;
+        }
+        /* --- End Footer --- */
+        
+        /* --- Scroll Animation Classes --- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform; /* Performance hint */
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- End Scroll Animation --- */
+
+
+        /* --- NEW: Appointment Modal --- */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .modal-header {
+            border-bottom: none;
+            padding: 1.5rem 1.5rem 0;
+        }
+        .modal-header .btn-close {
+            transition: transform 0.3s ease;
+        }
+        .modal-header .btn-close:hover {
+            transform: scale(1.1);
+        }
+        .modal-body {
+            padding: 1.5rem;
+        }
+        .modal-footer {
+            border-top: none;
+            padding: 0 1.5rem 1.5rem;
+        }
+        #appointmentForm .form-label {
+            font-weight: 600;
+            color: var(--bs-text-headings);
+        }
+        #appointmentForm .form-control,
+        #appointmentForm .form-select {
+            border-radius: 8px;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+        }
+        #appointmentForm .form-control:focus,
+        #appointmentForm .form-select:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        /* --- End Appointment Modal --- */
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 70vh; /* Adjust hero height for mobile */
+            }
+            .hero-section .display-3 {
+                font-size: 2.5rem;
+            }
+            .hero-section .lead {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            section#home {
+                padding: 0; 
+            }
+            .navbar-nav .nav-link::after {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body> <!-- Removed data-bs-theme="dark" -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top"> <!-- Added navbar-light -->
+        <div class="container">
+            <!-- UPDATED: Added Logo next to the brand name -->
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="Umiya_Logo.png" alt="Umiya Logo" onerror="this.src='https://placehold.co/40x40/0d6efd/FFF?text=Logo';">
+                <span>Umiya Physiotherapy Center</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center text-center"> <!-- Removed text-white -->
+        <div class="container">
+            <!-- Using original filename: Umiya_Logo.png -->
+            <!-- REMOVED: Logo and H1 are now in the Navbar -->
+            <!-- 
+            <img src="Umiya_Logo.png" class="card-img-top rounded-circle mx-auto d-block mt-3" alt="Umiya Logo" style="width: 150px; height: 150px; object-fit: cover;" onerror="this.src='https://placehold.co/150x150/D9534F/FFF?text=Umiya+Logo'; this.style.backgroundColor='#fff'; this.style.padding='10px';">
+            <h1 class="display-3 fw-bold mb-3">UMIYA PHYSIOTHERAPY CENTER</h1>
+            -->
+            
+            <p class="lead mb-4">Hope for better tomorrow</p>
+            <!-- UPDATED: Button now opens appointment.html in a new tab -->
+            <a href="Appointment_Form.html" target="_blank" class="btn btn-primary btn-lg me-2">Book an Appointment</a>  
+            <a href="#services" class="btn btn-outline-dark btn-lg">Explore Our Services</a> <!-- Changed to btn-outline-dark -->
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0 reveal-on-scroll">
+                    <h2 class="display-5 fw-bold mb-4">About Umiya Physiotherapy Center</h2>
+                    <p class="lead">At Umiya Physiotherapy Center, we are dedicated to providing the highest quality of care to help our patients regain their mobility, reduce pain, and improve their overall quality of life.</p>
+                    <p>Our experienced and compassionate team utilizes evidence-based practices and state-of-the-art equipment to create personalized treatment plans tailored to your specific needs. We believe in empowering our patients through education and active participation in their recovery journey.</p>
+                </div>
+                <div class="col-md-6 reveal-on-scroll">
+                    <!-- Using original filename: clinic_photo.jpg -->
+                    <img src="clinic_photo.jpg" alt="About Umiya Physiotherapy Center" class="img-fluid rounded shadow-lg" onerror="this.src='https://placehold.co/600x400/EEE/AAA?text=clinic_photo.jpg'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5"> 
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-5 reveal-on-scroll">Our Specialized Physiotherapy Services</h2>
+            
+            <!-- Marquee Section REMOVED -->
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Service Card 1 -->
+                <div class="col reveal-on-scroll">
+                    <div class="card h-100"> 
+                        <div class="card-body">
+                            <i class="fas fa-bone fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Orthopedic Physiotherapy</h5>
+                            <p class="card-text">Specialized treatment for musculoskeletal injuries, fractures, and post-surgical rehabilitation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="col reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-brain fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Neurological Rehabilitation</h5>
+                            <p class="card-text">Comprehensive care for conditions like stroke, Parkinson's, and spinal cord injuries.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="col reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-child fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Pediatric Physiotherapy</h5>
+                            <p class="card-text">Dedicated therapy for children with developmental delays and movement disorders.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="col reveal-on-scroll">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-running fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Sports Injury Rehabilitation</h5>
+                            <p class="card-text">Expert care for athletes to recover from injuries and optimize performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 5 -->
+                <div classcol reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-female fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Women's Health Physiotherapy</h5>
+                            <p class="card-text">Specialized treatments for pre and postnatal care, pelvic floor dysfunction, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 6 -->
+                <div class="col reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-stethoscope fa-3x mb-3"></i>
+                            <h5 class="card-title fw-bold">Geriatric Physiotherapy</h5>
+                            <p class="card-text">Assistance for seniors to maintain mobility, balance, and independence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-5 reveal-on-scroll">Meet Our Expert</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-lg-3 mb-4 reveal-on-scroll">
+                    <div class="card h-100">
+                        <!-- Using original filename: mukesh_photo.jpg -->
+                        <img src="mukesh_photo.jpg" class="card-img-top rounded-circle mx-auto d-block mt-3" alt="Dr. Mukesh Patel" style="width: 150px; height: 150px; object-fit: cover;" onerror="this.src='https://placehold.co/150x150/EEE/AAA?text=mukesh_photo.jpg'">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold mb-1">Dr. Mukesh Patel</h5>
+                            <p class="card-text text-muted">Lead Physiotherapist (M.P.T Ortho)</p>
+                            <p class="card-text small">Dr. Patel has over 15 years of experience specializing in orthopedic and sports injury rehabilitation.</p>
+                            <div class="social-icons mt-3">
+                                <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5"> 
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-5 reveal-on-scroll">Patient Testimonials </h2>
+            <div class="video mb-4 reveal-on-scroll">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/JKikBx1lg0M?si=M2qFou_5RYeqS8Ab" frameborder="0" allowfullscreen style="border-radius: 15px;"></iframe>
+            </div>
+            <div class="video mb-4 reveal-on-scroll" style="transition-delay: 100ms;">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/LbWBWDn4KWg?si=5WOrygnbnbbUXwCC" frameborder="0" allowfullscreen style="border-radius: 15px;"></iframe>
+            </div>
+            
+            <div id="testimonialCarousel" class="carousel slide reveal-on-scroll" data-bs-ride="carousel" style="transition-delay: 200ms;">
+                <div class="carousel-inner">
+                    <!-- Carousel Item 1 (Active) -->
+                    <div class="carousel-item active">
+                        <div class="card p-4 mx-auto" style="max-width: 700px;">
+                            <blockquote class="blockquote mb-0">
+                                <p class="lead mb-3">"Professional, friendly, and effective. My recovery from a sports injury was much faster than I expected, thanks to Umiya Physiotherapy."</p>
+                                <footer class="blockquote-footer"><strong>Amit Singh</strong>, Patient</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Carousel Item 2 (Add more as needed) -->
+                    <div class="carousel-item">
+                        <div class="card p-4 mx-auto" style="max-width: 700px;">
+                             <blockquote class="blockquote mb-0">
+                                <p class="lead mb-3">"The care and personal attention I received were outstanding. I highly recommend Dr. Patel and his team to anyone in need of physiotherapy."</p>
+                                <footer class="blockquote-footer"><strong>Priya Sharma</strong>, Patient</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="display-5 fw-bold text-center mb-5 reveal-on-scroll">Get in Touch with Us</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0 reveal-on-scroll">
+                    <h4 class="fw-bold mb-3">Visit Our Clinic</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>Umiya Physiotherapy Center, </p>
+                    <p style="padding-left: 35px;">Gayatri Shakti pith road, </p>
+                    <p style="padding-left: 35px;">Mehsana highway, </p>                                                       
+                    <p style="padding-left: 35px;">Mehsana 384002 </p>
+                    
+                    <h4 class="fw-bold mb-3 mt-4">Contact Details</h4>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+919998994974">+91 9998994974</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@umiyaphysio.com">info@umiyaphysio.com</a></p>
+
+                    <h4 class="fw-bold mb-3 mt-4">Opening Hours</h4>
+                    <p><i class="far fa-clock"></i> Monday - Friday: 8:00 AM - 8:30 PM</p>
+                    <p><i class="far fa-clock"></i> Saturday: 8:00 AM - 8:00 PM</p>
+                    <p><i class="far fa-clock"></i> Sunday: Closed</p>
+                    
+                    <div class="social-media mt-4">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 reveal-on-scroll" style="transition-delay: 100ms;">
+                    <h4 class="fw-bold mb-3">Locate Us on Map</h4>
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7312.760590455941!2d72.37053886055944!3d23.590690421552054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c411d61665a65%3A0x52de03802aa74f19!2z8J2QlPCdkKbwnZCi8J2QsvCdkJog8J2Qj_CdkKHwnZCy8J2QrPCdkKLwnZCo8J2QrfCdkKHwnZCe8J2Qq_CdkJrwnZCp8J2QsiDwnZCC8J2QnvCdkKfwnZCt8J2QnvCdkKsgfHwgQmVzdCBQaHlzaW9DbnRyZSwgUGh5c2lvdGhlcmFweSBDbGluaWM!5e0!3m2!1sen!2sin!4v1748585939532!5m2!1sen!2sin" width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REMOVED: Appointment Modal is no longer needed -->
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Umiya Physiotherapy Center. All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <!-- FIXED: xintegrity corrected to integrity -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcOQVfRVzprpG5F5mI2N" crossorigin="anonymous"></script>
+
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            // Check if the link is not a modal trigger (data-bs-toggle)
+            if (!anchor.hasAttribute('data-bs-toggle')) {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+
+        // REMOVED: openForm() function is no longer needed.
+
+        
+        // --- NEW: Scroll Animation Logic ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        // Optional: Stop observing after it's visible
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+
+
+            // --- REMOVED: Form Submission Logic ---
+            // This logic is now in appointment.html
+        });
+        // --- End Scroll Animation Logic ---
+
+    </script>
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

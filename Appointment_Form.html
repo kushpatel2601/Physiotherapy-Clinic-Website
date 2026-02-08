@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Umiya Physiotherapy Center</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bs-primary: #0d6efd;
+            --bs-primary-hover: #0b5ed7;
+            --bs-light-bg: #ffffff;
+            --bs-light-bg-alt: #f8f9fa;
+            --bs-text-dark: #555;
+            --bs-text-headings: #222;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            background-color: var(--bs-light-bg-alt);
+            color: var(--bs-text-dark);
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--bs-text-headings);
+        }
+
+        .form-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .form-card {
+            background-color: var(--bs-light-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            width: 100%;
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bs-primary-hover);
+            border-color: var(--bs-primary-hover);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+
+        .btn-outline-dark {
+            border-radius: 50px;
+            color: var(--bs-text-headings);
+            border-color: var(--bs-text-headings);
+        }
+
+        .btn-outline-dark:hover {
+            transform: translateY(-3px);
+            background-color: var(--bs-text-headings);
+            color: var(--bs-light-bg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #appointmentForm .form-label {
+            font-weight: 600;
+            color: var(--bs-text-headings);
+        }
+
+        #appointmentForm .form-control,
+        #appointmentForm .form-select {
+            border-radius: 8px;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+        }
+
+        #appointmentForm .form-control:focus,
+        #appointmentForm .form-select:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+        }
+
+        #successMessage { display: none; padding: 2rem 0; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9">
+                <div class="form-card" id="formCard">
+                    <div class="text-center mb-4">
+                        <img src="Umiya_Logo.png" alt="Umiya Logo" style="width: 80px; height: 80px;" onerror="this.src='https://placehold.co/80x80/0d6efd/FFF?text=Logo';">
+                        <h2 class="mt-3">Book an Appointment</h2>
+                        <p class="text-muted mb-0">Fill out the form below and we'll contact you to confirm.</p>
+                    </div>
+
+                    <form id="appointmentForm" action="#" method="POST" onsubmit="return false;">
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="patientName" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="patientPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="patientPhone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="appointmentDate" class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" id="appointmentDate" name="date" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="appointmentTime" class="form-label">Preferred Time</label>
+                                <input type="time" class="form-control" id="appointmentTime" name="time" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reasonForVisit" class="form-label">Reason for Visit</label>
+                            <select class="form-select" id="reasonForVisit" name="reason" required>
+                                <option value="" selected disabled>Please select your primary concern...</option>
+                                <option value="Neck Pain">Neck Pain</option>
+                                <option value="Back Pain">Back Pain</option>
+                                <option value="Shoulder Pain">Shoulder Pain</option>
+                                <option value="Knee Pain">Knee Pain</option>
+                                <option value="Sports Injury">Sports Injury</option>
+                                <option value="Post-Surgical Rehab">Post-Surgical Rehab</option>
+                                <option value="Neurological Condition">Neurological Condition</option>
+                                <option value="Women's Health">Women's Health</option>
+                                <option value="Other">Other (Please specify below)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="patientMessage" class="form-label">Additional Message (Optional)</label>
+                            <textarea class="form-control" id="patientMessage" name="message" rows="3" placeholder="Tell us more about your condition..."></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="button" class="btn btn-outline-dark" onclick="window.close()">Close Window</button>
+                            <button type="submit" class="btn btn-primary">Request Appointment</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="successMessage" class="form-card text-center">
+                    <h3 class="mb-3">Thank You!</h3>
+                    <p class="lead" id="successText">Your appointment request has been sent.</p>
+                    <p>We will contact you shortly to confirm.</p>
+                    <button type="button" class="btn btn-primary mt-3" onclick="window.close()">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const appointmentForm = document.getElementById("appointmentForm");
+    const formCard = document.getElementById("formCard");
+    const successMessage = document.getElementById("successMessage");
+    const successText = document.getElementById("successText");
+
+    const sheetWebAppUrl = "https://script.google.com/macros/s/AKfycbw_IURuLoKIlGe0JjoO03LR8Hoch_HezTqmtOCfmrlPXOymmKhXT6RwEr6Z9Y--5FPMpg/exec"; // Replace with Apps Script Web App URL
+    const sheetId = "AKfycbw_IURuLoKIlGe0JjoO03LR8Hoch_HezTqmtOCfmrlPXOymmKhXT6RwEr6Z9Y--5FPMpg"; // Replace with Google Sheet ID
+
+    appointmentForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const data = new FormData(appointmentForm);
+        const params = new URLSearchParams();
+        for (const pair of data.entries()) {
+            params.append(pair[0], pair[1]);
+        }
+
+        fetch(sheetWebAppUrl, {
+            method: "POST",
+            body: params
+        })
+        .then(res => res.text())
+        .then(response => {
+            if(response === "SUCCESS") {
+                formCard.style.display = "none";
+                successMessage.style.display = "block";
+                successText.innerHTML = `Your request for <strong>${data.get('date')}</strong> has been sent. We will call you at <strong>${data.get('phone')}</strong> to confirm.`;
+
+                // Open the Google Sheet
+                window.open(`https://docs.google.com/spreadsheets/d/${sheetId}/edit`, "_blank");
+
+                appointmentForm.reset();
+            } else {
+                alert("Error submitting form. Please try again.");
+            }
+        })
+        .catch(err => console.error(err));
+    });
+});
+</script>
+
+</body>
+</html>
