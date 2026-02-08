@@ -1,1 +1,0 @@
-# kushpatel1210.github.io
